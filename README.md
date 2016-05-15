@@ -11,4 +11,4 @@ Relation of Prenatal Phenylalanine Exposure to Infant and Childhood Cognitive Ou
  Retrieved from http://pediatrics.aappublications.org/content/112/Supplement_4/1537.
 ```  
   
-[R code file](Data_sim.R) is containing all the codes used for this project. [R Markdown file](Data_Simulation.Rmd) contains detailed contents of the whole project as well as plots and results presented together with R codes.  
+[R code file](Data_sim.R) is containing all the codes used for this project. [R Markdown file](Data_Simulation.Rmd) contains detailed contents of the whole project as well as plots and results presented by R codes.  
