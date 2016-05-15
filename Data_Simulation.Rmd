@@ -13,8 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
   
 The genetic disorder phenylketonuria (PKU) is the inability to metabolize phenylalanine because of a lack of the enzyme phenylalanine(Phe) hydroxylase. Individuals with this disorder are known as "phenylketonurics" and must regulate their intake of phenylalanine, an essential amino acid that support our body to remain healthy. The paper that this project based on is: ([paper](data_sim.pdf))    
 ```  
-Widaman, K. & Azen, C. (2003). Relation of Prenatal Phenylalanine Exposure to Infant and Childhood Cognitive Outcomes: Results From the International Maternal PKU Collaborative Study. Pediatrics, 112(Supplement 4), 1537-1543. Retrieved from http://pediatrics.aappublications.org/content/112/Supplement_4/1537.
-```  
+Relation of Prenatal Phenylalanine Exposure to Infant and Childhood Cognitive Outcomes:  
+         Results From the International Maternal PKU Collaborative Study  
+                           Widaman, K. & Azen, C. (2003).  
+                     Pediatrics, 112(Supplement 4), 1537-1543  
+ Retrieved from http://pediatrics.aappublications.org/content/112/Supplement_4/1537.
+```   
 It studied 412 children and their mothers from the International Maternal PKU Collaborative Study on their prenatal Phe exposure to the effect on offstrings intellectual development.  
 
 The goal of this project is to simulate the data and replicate the study on relation of prenatal Phenylalanine exposure to infant and childhood cognitive outcomes. In addition, developmental relations of maternal demographic, pregnancy-related, and prenatal variables on offspring intelligence will also be examined.  
@@ -78,8 +82,8 @@ Predictor variables:
   - Mother's Performance IQ  
   - Mother's Full-scale IQ  
   - Weight gain (lb)  
-  - Variability (SD) of Phe (??mol/L)  
-  - Average Phe exposure (??mol/L)  
+  - Variability (SD) of Phe (umol/L)  
+  - Average Phe exposure (umol/L)  
   - Gestation at term(weeks)  
   
 Response variables:  
@@ -107,43 +111,48 @@ ggplot(data=data, aes(x=phe_avg, y = MDI))+geom_point(aes(color = age.level))+
    
 ### Analysis on influential factors of children's cognitive performance  
 ```{r}
-lm1 = lm(MDI ~ phe_avg, data =data)
-summary(lm1)
-plot(lm1,1)  
-```  
-*Average maternal Phe exposure is a significant preditor of children's MDI at age 1.*  
+lm1 = lm(MDI ~ phe_avg, data =data)  
+summary(lm1)   
+plot(lm1,1)   
+```   
+
+* Average maternal Phe exposure is a significant preditor of children's MDI at age 1.    
   
 ```{r}
-lm2 = lm(PDI ~ phe_avg, data =data)
-summary(lm2)
-plot(lm2,1)
+lm2 = lm(PDI ~ phe_avg, data =data)  
+summary(lm2)  
+plot(lm2,1)  
 ```  
-*Average maternal Phe exposure is a significant preditor of children's PDI at age 1.*  
+
+* Average maternal Phe exposure is a significant preditor of children's PDI at age 1.    
   
-*When consider full model to observe other signficant variables:*  
+When consider full model to observe other signficant variables:    
 ```{r}
-full1 = lm(MDI ~ . -PDI-age.level , data =data)
-summary(full1)
-plot(full1,1)
-``` 
-*Mother's Performance IQ, mother's weight gain during pregnancy, average maternal Phe exposure, gestation term, and baby's weight at birth are significant predictor's of the baby's cognitive performance.*  
+full1 = lm(MDI ~ . -PDI-age.level , data =data)  
+summary(full1)  
+plot(full1,1)   
+```  
+
+* Mother's Performance IQ, mother's weight gain during pregnancy, average maternal Phe exposure, gestation term, and baby's weight at birth are significant predictor's of the baby's cognitive performance.   
   
 ### Additional analysis on influential factors on newborn condition  
 ```{r}
-bwt_all = lm(birth_wt ~ . -MDI -PDI -age.level, data = data)
-summary(bwt_all)
-plot(bwt_all,1)
-```  
-*Mother's Performance IQ, mother's weight gain during pregnancy, gestation term, and baby's head circumfernce at birth are significant predictor's of the baby's birth weight.*  
+bwt_all = lm(birth_wt ~ . -MDI -PDI -age.level, data = data)  
+summary(bwt_all)  
+plot(bwt_all,1)  
+```   
+
+* Mother's Performance IQ, mother's weight gain during pregnancy, gestation term, and baby's head circumfernce at birth are significant predictor's of the baby's birth weight.  
   
 ```{r}
-hcir_all = lm(head_circum ~ . -MDI -PDI -age.level, data = data)
-summary(hcir_all)
-plot(hcir_all,1)
-```  
-*Mother's Performance IQ, mother's weight gain during pregnancy, gestation term, and baby's weight at birth are significant predictor's of the baby's head circumference at birth.*  
+hcir_all = lm(head_circum ~ . -MDI -PDI -age.level, data = data)  
+summary(hcir_all)  
+plot(hcir_all,1)  
+```   
+
+* Mother's Performance IQ, mother's weight gain during pregnancy, gestation term, and baby's weight at birth are significant predictor's of the baby's head circumference at birth.  
   
   
 ## Conclusion  
   
-*This project has sucessfully simulated the study data with its characteristics and replicated the study result. Baby's cognitive performance is negatively affected by maternal Phe exposure.*  
+**This project has sucessfully simulated the study data with its characteristics and replicated the study result. Baby's cognitive performance is negatively affected by maternal Phe exposure.**  
